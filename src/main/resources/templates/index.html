@@ -1,0 +1,44 @@
+<html xmlns:th="https://www.thymeleaf.org" xmlns:layout="https://github.com/ultraq/thymeleaf-layout-dialect" layout:decorate="~{layout}">
+<head>
+	<title>Secured Content</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>Redis Session Example</h1>
+		<p>
+			<b>Application Name:</b>&nbsp;<span
+				th:text="*{applicationName}?: 'running locally'"></span>
+		</p>
+		<p>
+			<b>Instance Index:</b>&nbsp;<span id="instanceIndex"
+											  th:text="${instanceIndex}"></span>
+		</p>
+		<p>
+			<b>Container Address:</b>&nbsp;<span id="containerAddr"
+												 th:text="${containerAddr}"></span>
+		</p>
+		<p>
+			<b>Cell Address:</b>&nbsp;<span id="instanceAddress"
+											th:text="${instanceAddr}"></span>
+		</p>
+		<p>
+			<b>Java Version:</b>&nbsp;<span id="javaVersion"
+											th:text="${javaVersion}"></span>
+		</p>
+
+		<div th:if="${killed} == null" class="panel panel-default">
+
+			<p>
+				<a href="/" class="btn btn-default">Refresh</a>
+				<a href="/?doit=true" class="btn btn-danger">Kill</a>
+			</p>
+
+		</div>
+
+		<div th:if="${killed}" class="panel panel-default">
+			<a href="/" class="btn btn-default">Refresh</a>
+		</div>
+
+	</div>
+</body>
+</html>
